@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+require "rwby"
+require 'thor'
+
+module Rwby
+  class CLI < Thor
+    class_option :help, type: :boolean, aliases: '-h', desc: 'help message.'
+    class_option :version, type: :boolean, desc: 'version'
+    default_task :hello
+
+    desc 'hello', 'Say "Hello RWBY World!!"'
+    def hello
+      puts "Hello RWBY World!!"
+    end
+
+    desc 'version', 'version'
+    def version
+      p Rwby::VERSION
+    end
+  end
+end
+
+Rwby::CLI.start(ARGV)
